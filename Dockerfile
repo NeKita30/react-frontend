@@ -18,6 +18,8 @@ RUN apk add --no-cache nginx && adduser -S -D -H -u 10001 nginx_usr \
 COPY --from=build /app/build /usr/share/nginx/html
 COPY ./frontend.nginx.conf /etc/nginx/nginx.conf
 
+USER nginx_usr
+
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
